@@ -1,0 +1,22 @@
+{
+  "fitbit": {
+    "appUUID": "f1d96e5c-91ae-421c-8c02-aa13713ec7a4",
+    "appType": "app",
+    "appDisplayName": "Seattle Transit",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#009688",
+    "requestedPermissions": [
+      "access_internet",
+      "access_location"
+    ],
+    "buildTargets": [
+      "higgs",
+      "meson"
+    ],
+    "i18n": {
+      "en": {
+        "name": "Seattle Transit"
+      }
+    }
+  }
+}
