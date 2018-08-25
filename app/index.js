@@ -6,11 +6,24 @@ let stopName = document.getElementById("stopName");
 let myPopup = document.getElementById("my-popup");
 let popButton1 = myPopup.getElementById("stopButton1");
 let popButton2 = myPopup.getElementById("stopButton2");
+let myCode1;
 
 popButton1.onclick = function(evt){
-  console.log("pressed button 1");
+  console.log(myCode1);
   myPopup.style.display = "none";
   stopName.text = "Fetching times";
+  fetchTimes();
+}
+
+// Request time data from the companion
+function fetchTimes() {
+  if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
+    // Send a command to the companion
+    messaging.peerSocket.send({
+      command: 'getTimes',
+      code: myCode1
+    });
+  }
 }
 
 // Request stop data from the companion
@@ -29,6 +42,7 @@ function processStopData(data) {
   stopName.text = "";
   popButton1.text = data.name1;
   popButton2.text = data.name2;
+  myCode1 = data.code1;
   myPopup.style.display = "inline";
 }
 
@@ -40,8 +54,11 @@ messaging.peerSocket.onopen = function() {
 
 // Listen for messages from the companion
 messaging.peerSocket.onmessage = function(evt) {
-  if (evt.data) {
+  if (evt.data.type === "firstCall") {
     processStopData(evt.data);
+  }
+  else{
+    console.log(evt.data.time1);
   }
 }
 
