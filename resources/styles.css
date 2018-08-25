@@ -1,9 +1,9 @@
 .background {
-  viewport-fill: fb-white;
+  viewport-fill: fb-black;
 }
 
 #stopName {
-  fill: black;
+  fill: white;
   font-size: 28;
   font-family: System-Regular;
   font-weight: bold;

@@ -13,7 +13,8 @@ function queryOBA(lat, long) {
       response.json()
       .then(function(data) {
         var stop = {
-          name: data["data"]["list"][0]["name"]
+          name1: data["data"]["list"][0]["name"],
+          name2: data["data"]["list"][1]["name"]
         }
         // Send the stop data to the device
         returnStopData(stop);

@@ -1,4 +1,14 @@
 <svg class="background">
-  <text id="stopName" x="50%" y="50%">loading...</text>
-</svg>
+  <text id="stopName" x="50%" y="50%">Fetching stops</text>
+  
+  <svg id="my-popup" display="none">
+    <use id="stopButton1" href="#square-button" y="5" fill="fb-red">
+      <set href="#text" attributeName="text-buffer" to="I am making this a long string to help me" />
+    </use>
+    <use id="stopButton2" href="#square-button" y="69" fill="fb-red">
+      <set href="#text" attributeName="text-buffer" to="I am making this a long string to help me" />
+    </use>
+  </svg>
 
+  
+</svg>

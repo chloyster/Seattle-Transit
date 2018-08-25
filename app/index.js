@@ -2,7 +2,16 @@
 import * as messaging from "messaging";
 import document from "document";
 
-let time = document.getElementById("stopName");
+let stopName = document.getElementById("stopName");
+let myPopup = document.getElementById("my-popup");
+let popButton1 = myPopup.getElementById("stopButton1");
+let popButton2 = myPopup.getElementById("stopButton2");
+
+popButton1.onclick = function(evt){
+  console.log("pressed button 1");
+  myPopup.style.display = "none";
+  stopName.text = "Fetching times";
+}
 
 // Request stop data from the companion
 function fetchStops() {
@@ -16,8 +25,11 @@ function fetchStops() {
 
 // Display the stop data received from the companion
 function processStopData(data) {
-  console.log("Your closest stop is: " + data.name);
-  time.text = data.name;
+  console.log("Your closest stop is: " + data.name1);
+  stopName.text = "";
+  popButton1.text = data.name1;
+  popButton2.text = data.name2;
+  myPopup.style.display = "inline";
 }
 
 // Listen for the onopen event
@@ -38,6 +50,3 @@ messaging.peerSocket.onerror = function(err) {
   // Handle any errors
   console.log("Connection error: " + err.code + " - " + err.message);
 }
-
-// Fetch the weather every 30 minutes
-setInterval(fetchStops, 30 * 1000 * 60);
