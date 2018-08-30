@@ -10,5 +10,15 @@
     </use>
   </svg>
 
+  <svg id="displayTimes" display="none">
+    <rect class="full-size" fill="fb-black" />
+    
+    <use href="#mixed-text-center-bottom" class="dialog-mixed-text" fill="fb-white">
+    <set href="#header/text" attributeName="text-buffer" to="I am making this a long string to help me" />
+    <set href="#header/text" attributeName="fill" to="fb-magenta"/>
+    <set href="#copy/text" attributeName="text-buffer" to="Are you ready to begin working?" />
+    <set href="#bottom-padding" attributeName="display" to="none" />
+  </use>
+  </svg>
   
 </svg>

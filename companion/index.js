@@ -5,7 +5,7 @@ import { geolocation } from "geolocation";
 
 var API_KEY = "b3d23c96-9843-4544-b7d4-464a402b7a8d";
 var FIRSTCALL = "https://api.pugetsound.onebusaway.org/api/where/stops-for-location.json?key=";
-var SECONDCALL = "https://api.pugetsound.onebusaway.org/api/where/schedule-for-stop/";
+var SECONDCALL = "https://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/";
 
 
 //get times from One Bus Away
@@ -17,7 +17,10 @@ function queryTimes(code) {
       .then(function(data) {
         var stop = {
           type: "secondCall",
-          time1: data["data"]["entry"]["stopRouteSchedules"][0]["stopRouteDirectionSchedules"][0]["scheduleStopTimes"][0]["arrivalTime"]
+          time1A: data["data"]["entry"]["arrivalsAndDepartures"][0]["predictedDepartureTime"],
+          time1B: data["data"]["entry"]["arrivalsAndDepartures"][0]["scheduledDepartureTime"],
+          time2A: data["data"]["entry"]["arrivalsAndDepartures"][1]["predictedDepartureTime"],
+          time2B: data["data"]["entry"]["arrivalsAndDepartures"][1]["scheduledDepartureTime"]
         }
         // Send the stop data to the device
         console.log("sending time data");
@@ -40,7 +43,8 @@ function queryOBA(lat, long) {
           type: "firstCall",
           name1: data["data"]["list"][0]["name"],
           name2: data["data"]["list"][1]["name"],
-          code1: data["data"]["list"][0]["id"]
+          code1: data["data"]["list"][0]["id"],
+          code2: data["data"]["list"][1]["id"]
         }
         // Send the stop data to the device
         returnStopData(stop);
