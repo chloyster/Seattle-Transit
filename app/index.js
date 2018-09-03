@@ -6,6 +6,8 @@ let stopName = document.getElementById("stopName");
 let myPopup = document.getElementById("my-popup");
 let popButton1 = myPopup.getElementById("stopButton1");
 let popButton2 = myPopup.getElementById("stopButton2");
+let myHeader1 = myPopup.getElementById("direction1");
+let myHeader2 = myPopup.getElementById("direction2");
 let timeDisplay = document.getElementById("displayTimes");
 let stopHeader = timeDisplay.getElementById("#header/text");
 let stopTime = timeDisplay.getElementById("#copy/text");
@@ -66,6 +68,8 @@ function processStopData(data) {
   stopName.text = "";
   popButton1.text = data.name1;
   popButton2.text = data.name2;
+  myHeader1.text = data.direction1;
+  myHeader2.text = data.direction2;
   myCode1 = data.code1;
   myName1 = data.name1;
   myCode2 = data.code2;
@@ -85,11 +89,11 @@ function processTimeData(data){
   console.log(currentTime + " " + data.time1A);
   if(data.time1A === 0){
     let timeTill = (data.time1B - currentTime);
-    stopTime.text = "*" + Math.round((timeTill * 0.001) * (1/60));
+    stopTime.text = "Bus " + data.time1Route + ": *" + Math.round((timeTill * 0.001) * (1/60)) + " min";
   }
   else{
     let timeTill = (data.time1A - currentTime);
-    stopTime.text = Math.round((timeTill * 0.001) * (1/60));
+    stopTime.text = "Bus " + data.time1Route + ": " + Math.round((timeTill * 0.001) * (1/60)) + " min";
   }
   timeDisplay.style.display = "inline";
 }

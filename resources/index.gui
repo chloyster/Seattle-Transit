@@ -2,10 +2,12 @@
   <text id="stopName" x="50%" y="50%">Fetching stops</text>
   
   <svg id="my-popup" display="none">
-    <use id="stopButton1" href="#square-button" y="5" fill="fb-red">
+    <text id="direction1" x="50%" y ="8%">SouthBound</text>
+    <text id="direction2" x ="50%" y = "38%">NorthBound</text>
+    <use id="stopButton1" href="#square-button" y="21" fill="fb-red">
       <set href="#text" attributeName="text-buffer" to="I am making this a long string to help me" />
     </use>
-    <use id="stopButton2" href="#square-button" y="69" fill="fb-red">
+    <use id="stopButton2" href="#square-button" y="115" fill="fb-red">
       <set href="#text" attributeName="text-buffer" to="I am making this a long string to help me" />
     </use>
   </svg>

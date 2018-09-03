@@ -10,3 +10,21 @@
   text-anchor: middle;
   text-length: 1000;
 }
+
+#direction1 {
+  fill: green;
+  font-size: 28;
+  font-family: System-Regular;
+  font-weight: bold;
+  text-anchor: middle;
+  text-length: 1000;
+}
+
+#direction2 {
+  fill: green;
+  font-size: 28;
+  font-family: System-Regular;
+  font-weight: bold;
+  text-anchor: middle;
+  text-length: 1000;
+}

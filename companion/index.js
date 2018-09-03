@@ -15,12 +15,17 @@ function queryTimes(code) {
       console.log("recieved response");
       response.json()
       .then(function(data) {
+        let beginningCall = data["data"]["entry"]["arrivalsAndDepartures"];
+        let myLength = beginningCall.length;
+        console.log("Number of departures obtained: " + myLength);
         var stop = {
           type: "secondCall",
-          time1A: data["data"]["entry"]["arrivalsAndDepartures"][0]["predictedDepartureTime"],
-          time1B: data["data"]["entry"]["arrivalsAndDepartures"][0]["scheduledDepartureTime"],
-          time2A: data["data"]["entry"]["arrivalsAndDepartures"][1]["predictedDepartureTime"],
-          time2B: data["data"]["entry"]["arrivalsAndDepartures"][1]["scheduledDepartureTime"]
+          time1A: beginningCall[0]["predictedDepartureTime"],
+          time1B: beginningCall[0]["scheduledDepartureTime"],
+          time1Route: beginningCall[0]["routeShortName"],
+          time2A: beginningCall[1]["predictedDepartureTime"],
+          time2B: beginningCall[1]["scheduledDepartureTime"],
+          time2Route: beginningCall[1]["routeShortName"]
         }
         // Send the stop data to the device
         console.log("sending time data");
@@ -44,7 +49,9 @@ function queryOBA(lat, long) {
           name1: data["data"]["list"][0]["name"],
           name2: data["data"]["list"][1]["name"],
           code1: data["data"]["list"][0]["id"],
-          code2: data["data"]["list"][1]["id"]
+          code2: data["data"]["list"][1]["id"],
+          direction1: data["data"]["list"][0]["direction"],
+          direction2: data["data"]["list"][1]["direction"]
         }
         // Send the stop data to the device
         returnStopData(stop);
